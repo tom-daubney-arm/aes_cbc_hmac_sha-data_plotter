@@ -1,0 +1,20 @@
+thodau01@cesw-amp-gbt-1s-m12830-01:/home_local/thodau01/repos/dpdk$ sudo build/app/dpdk-test-crypto-perf --socket-mem 1024,0 --legacy-mem --vdev crypto_openssl -l 3,4 -n 4 -- --buffer-sz 32,64,128,256,512,1024,2048,4096,8192 --optype cipher-then-auth --ptest throughput --auth-key-sz 64 --cipher-key-sz 16 --cipher-iv-sz 16 --auth-op generate --burst-sz 32 --total-ops 10000000 --silent --digest-sz 12 --auth-algo sha1-hmac --cipher-algo aes-cbc --cipher-op encrypt --devtype crypto_openssl
+EAL: Detected CPU lcores: 128
+EAL: Detected NUMA nodes: 1
+EAL: Detected static linkage of DPDK
+EAL: Multi-process socket /var/run/dpdk/rte/mp_socket
+EAL: Selected IOVA mode 'VA'
+CRYPTODEV: Creating cryptodev crypto_openssl
+CRYPTODEV: Initialisation parameters - name: crypto_openssl,socket id: 0, max queue pairs: 8
+Allocated pool "sess_mp_0" on socket 0
+    lcore id    Buf Size  Burst Size    Enqueued    Dequeued  Failed Enq  Failed Deq        MOps        Gbps  Cycles/Buf
+
+           4          32          32    10000000    10000000           0           0      2.1467      0.5496       11.65
+           4          64          32    10000000    10000000           0           0      1.9827      1.0152       12.61
+           4         128          32    10000000    10000000           0           0      1.7657      1.8080       14.16
+           4         256          32    10000000    10000000           0           0      1.4485      2.9665       17.26
+           4         512          32    10000000    10000000           0           0      1.0653      4.3633       23.47
+           4        1024          32    10000000    10000000           0           0      0.6989      5.7258       35.77
+           4        2048          32    10000000    10000000           0           0      0.4141      6.7854       60.37
+           4        4096          32    10000000    10000000           0           0      0.2282      7.4784      109.54
+           4        8192          32    10000000    10000000           0           0      0.1202      7.8765      208.01

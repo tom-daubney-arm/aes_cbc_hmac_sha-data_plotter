@@ -1,0 +1,20 @@
+thodau01@cesw-amp-gbt-1s-m12830-01:/home_local/thodau01/repos/patched/dpdk_patched$ sudo build/app/dpdk-test-crypto-perf --socket-mem 1024,0 --legacy-mem --vdev crypto_openssl -l 3,4 -n 4 -- --buffer-sz 32,64,128,256,512,1024,2048,4096,8192 --optype cipher-then-auth --ptest throughput --auth-key-sz 64 --cipher-key-sz 32 --cipher-iv-sz 16 --auth-op generate --burst-sz 32 --total-ops 10000000 --silent --digest-sz 12 --auth-algo sha2-256-hmac --cipher-algo aes-cbc --cipher-op encrypt --devtype crypto_openssl
+EAL: Detected CPU lcores: 128
+EAL: Detected NUMA nodes: 1
+EAL: Detected static linkage of DPDK
+EAL: Multi-process socket /var/run/dpdk/rte/mp_socket
+EAL: Selected IOVA mode 'VA'
+CRYPTODEV: Creating cryptodev crypto_openssl
+CRYPTODEV: Initialisation parameters - name: crypto_openssl,socket id: 0, max queue pairs: 8
+Allocated pool "sess_mp_0" on socket 0
+    lcore id    Buf Size  Burst Size    Enqueued    Dequeued  Failed Enq  Failed Deq        MOps        Gbps  Cycles/Buf
+
+           4          32          32    10000000    10000000           0           0      3.2977      0.8442        7.58
+           4          64          32    10000000    10000000           0           0      2.8581      1.4633        8.75
+           4         128          32    10000000    10000000           0           0      2.3888      2.4461       10.47
+           4         256          32    10000000    10000000           0           0      2.0639      4.2268       12.11
+           4         512          32    10000000    10000000           0           0      1.4844      6.0799       16.84
+           4        1024          32    10000000    10000000           0           0      0.9610      7.8729       26.01
+           4        2048          32    10000000    10000000           0           0      0.5642      9.2441       44.31
+           4        4096          32    10000000    10000000           0           0      0.3090     10.1247       80.91
+           4        8192          32    10000000    10000000           0           0      0.1624     10.6429      153.94

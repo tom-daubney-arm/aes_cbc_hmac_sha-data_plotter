@@ -1,0 +1,20 @@
+thodau01@cesw-amp-gbt-1s-m12830-01:/home_local/thodau01/repos/dpdk$ sudo build/app/dpdk-test-crypto-perf --socket-mem 1024,0 --legacy-mem --vdev crypto_armv8 -l 3,4 -n 4 -- --buffer-sz 32,64,128,256,512,1024,2048,4096,8192 --optype cipher-then-auth --ptest throughput --auth-key-sz 64 --cipher-key-sz 16 --cipher-iv-sz 16 --auth-op generate --burst-sz 32 --total-ops 10000000 --silent --digest-sz 12 --auth-algo sha2-256-hmac --cipher-algo aes-cbc --cipher-op encrypt --devtype crypto_armv8
+EAL: Detected CPU lcores: 128
+EAL: Detected NUMA nodes: 1
+EAL: Detected static linkage of DPDK
+EAL: Multi-process socket /var/run/dpdk/rte/mp_socket
+EAL: Selected IOVA mode 'VA'
+CRYPTODEV: Creating cryptodev crypto_armv8
+CRYPTODEV: Initialisation parameters - name: crypto_armv8,socket id: 0, max queue pairs: 8
+Allocated pool "sess_mp_0" on socket 0
+    lcore id    Buf Size  Burst Size    Enqueued    Dequeued  Failed Enq  Failed Deq        MOps        Gbps  Cycles/Buf
+
+           4          32          32    10000000    10000000           0           0      9.9025      2.5350        2.52
+           4          64          32    10000000    10000000           0           0      6.7691      3.4658        3.69
+           4         128          32    10000000    10000000           0           0      4.8567      4.9733        5.15
+           4         256          32    10000000    10000000           0           0      3.0878      6.3238        8.10
+           4         512          32    10000000    10000000           0           0      1.8299      7.4952       13.66
+           4        1024          32    10000000    10000000           0           0      1.0092      8.2677       24.77
+           4        2048          32    10000000    10000000           0           0      0.5320      8.7160       46.99
+           4        4096          32    10000000    10000000           0           0      0.2734      8.9578       91.45
+           4        8192          32    10000000    10000000           0           0      0.1387      9.0868      180.30
