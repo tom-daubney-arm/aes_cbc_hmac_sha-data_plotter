@@ -1,0 +1,22 @@
+thodau01@cesw-amp-gbt-1s-m12830-01:~/repos/dpdk$ sudo build/app/dpdk-test-crypto-perf --socket-mem 1024,0 --legacy-mem --vdev crypto_armv8 -l 3,4 -n 4 -- --buffer-sz 64,128,256,512,1024,2048,4096,8192 --optype cipher-then-auth --ptest throughput --auth-key-sz 64 --cipher-key-sz 16 --cipher-iv-sz 16 --auth-op generate --burst-sz 32 --total-ops 10000000 --silent --digest-sz 12 --auth-algo sha1-hmac --cipher-algo aes-cbc --cipher-op encrypt --devtype crypto_armv8
+[sudo] password for thodau01: 
+EAL: Detected CPU lcores: 128
+EAL: Detected NUMA nodes: 1
+EAL: Detected static linkage of DPDK
+EAL: Multi-process socket /var/run/dpdk/rte/mp_socket
+EAL: Selected IOVA mode 'VA'
+CRYPTODEV: Creating cryptodev crypto_armv8
+CRYPTODEV: Initialisation parameters - name: crypto_armv8,socket id: 0, max queue pairs: 8
+Allocated pool "sess_mp_0" on socket 0
+    lcore id    Buf Size  Burst Size    Enqueued    Dequeued  Failed Enq  Failed Deq        MOps        Gbps  Cycles/Buf
+
+           4          64          32    10000000    10000000           0           0      6.4625      3.3088        3.87
+           4         128          32    10000000    10000000           0           0      4.6111      4.7218        5.42
+           4         256          32    10000000    10000000           0           0      2.9758      6.0945        8.40
+           4         512          32    10000000    10000000           0           0      1.7644      7.2269       14.17
+           4        1024          32    10000000    10000000           0           0      0.9737      7.9762       25.68
+           4        2048          32    10000000    10000000           0           0      0.5132      8.4087       48.71
+           4        4096          32    10000000    10000000           0           0      0.2637      8.6408       94.81
+           4        8192          32    10000000    10000000           0           0      0.1338      8.7661      186.90
+
+ 
